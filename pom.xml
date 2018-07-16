@@ -54,7 +54,7 @@
 				<version>1.16</version>
 				<configuration>
 					<licenseName>apache_v2</licenseName>
-					<licensesOutputDirectory>${project.build.outputDirectory}/licenses</licensesOutputDirectory>
+					<licensesOutputDirectory>${project.build.outputDirectory}/LICENSES</licensesOutputDirectory>
 				</configuration>
 				<executions>
 					<execution>
