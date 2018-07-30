@@ -24,6 +24,10 @@ import java.util.Collection;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * @author Jan Martin Keil
+ * @since 1.0.0
+ */
 public class Attribute {
 	/**
 	 * Unique and persistent identifier within WoRMS. Primary key in the

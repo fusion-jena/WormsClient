@@ -20,6 +20,10 @@ package de.uni_jena.cs.fusion.client.worms;
  * #L%
  */
 
+/**
+ * @author Jan Martin Keil
+ * @since 1.0.0
+ */
 public class WormsClientException extends Exception {
 	private static final long serialVersionUID = -7269153574516662753L;
 

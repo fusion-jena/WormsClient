@@ -20,6 +20,10 @@ package de.uni_jena.cs.fusion.client.worms;
  * #L%
  */
 
+/**
+ * @author Jan Martin Keil
+ * @since 1.0.0
+ */
 public enum MatchType {
 	exact, like, phonetic, near_1, near_2
 }

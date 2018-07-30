@@ -24,6 +24,10 @@ import java.util.Collection;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * @author Jan Martin Keil
+ * @since 1.0.0
+ */
 public class AttributeValue {
 	/**
 	 * An identifier for facts stored in the column measurementValue

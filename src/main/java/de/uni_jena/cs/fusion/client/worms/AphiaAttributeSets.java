@@ -21,9 +21,12 @@ package de.uni_jena.cs.fusion.client.worms;
  */
 
 import java.util.Collection;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * @author Jan Martin Keil
+ * @since 1.0.0
+ */
 public class AphiaAttributeSets {
 
 	/**

@@ -46,6 +46,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * A client for the <a href="http://www.marinespecies.org/rest/">World Register
+ * of Marine Species REST API</a>.
+ * 
+ * @author Jan Martin Keil
+ * @since 1.0.0
+ */
 public class WormsClient {
 
 	private final static int HTTP_MAX_URL_BYTES = 7806;
@@ -57,6 +64,7 @@ public class WormsClient {
 	 * Constructs a {@link WormsClient} with a default {@link CloseableHttpClient}
 	 * configured to a maximum number of 10 connections.
 	 * 
+	 * @since 1.0.0
 	 */
 	public WormsClient() {
 		this(HttpClientBuilder.create().build());
@@ -68,6 +76,8 @@ public class WormsClient {
 	 * 
 	 * @param httpClient
 	 *            {@link CloseableHttpClient} to use
+	 *            
+	 * @since 1.0.0
 	 */
 	public WormsClient(CloseableHttpClient httpClient) {
 		this.httpClient = Objects.requireNonNull(httpClient);
@@ -81,6 +91,8 @@ public class WormsClient {
 	 * @param includeChildren
 	 *            Include the tree of children.
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<AttributeKey> aphiaAttributeKeysById(long id, boolean includeChildren)
 			throws WormsClientException {
@@ -98,6 +110,8 @@ public class WormsClient {
 	 * @param includeChildren
 	 *            Include attributes inherited from the taxon its parent(s).
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<Attribute> aphiaAttributesByAphiaId(long aphiaId, boolean includeChildren)
 			throws WormsClientException {
@@ -114,6 +128,8 @@ public class WormsClient {
 	 * @param id
 	 *            The CateogryID to search for
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<AttributeValue> aphiaAttributeValuesByCategoryId(long id) throws WormsClientException {
 		return this.request(SERVICE_URL + "AphiaAttributeValuesByCategoryID/" + id,
@@ -139,6 +155,8 @@ public class WormsClient {
 	 *            Limit to marine taxa.
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaChildrenByAphiaId(long aphiaId, boolean marineOnly)
 			throws WormsClientException {
@@ -165,6 +183,8 @@ public class WormsClient {
 	 *            First record has number {@code 1}.
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaChildrenByAphiaId(long aphiaId, boolean marineOnly, long offset)
 			throws WormsClientException {
@@ -182,6 +202,8 @@ public class WormsClient {
 	 *            The AphiaID to search for
 	 * @return classification of the taxon
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Classification aphiaClassificationByAphiaId(long aphiaId) throws WormsClientException {
 		return this.request(SERVICE_URL + "AphiaClassificationByAphiaID/" + aphiaId,
@@ -196,6 +218,8 @@ public class WormsClient {
 	 *            The AphiaID to search for
 	 * @return all distributions
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<Distribution> aphiaDistributionsByAphiaId(long aphiaId) throws WormsClientException {
 		return this.request(SERVICE_URL + "AphiaDistributionsByAphiaID/" + aphiaId,
@@ -212,6 +236,8 @@ public class WormsClient {
 	 *            Type of external identifier to return.
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<String> aphiaExternalIdByAphiaId(long aphiaId, ExternalIdentifierSource type)
 			throws WormsClientException {
@@ -226,6 +252,8 @@ public class WormsClient {
 	 * @param scientificName
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Long aphiaIdByName(String scientificName) throws WormsClientException {
 		try {
@@ -254,6 +282,8 @@ public class WormsClient {
 	 *            The attribute definition id to search for
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<AphiaAttributeSets> aphiaIdsByAttributeKeyId(long id) throws WormsClientException {
 		Collection<AphiaAttributeSets> totalResult = new ArrayList<AphiaAttributeSets>();
@@ -277,6 +307,8 @@ public class WormsClient {
 	 *            Starting record number, when retrieving next chunk of (50)
 	 *            records. First record has number {@code 1}.
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<AphiaAttributeSets> aphiaIdsByAttributeKeyId(long id, long offset) throws WormsClientException {
 		return this.request(SERVICE_URL + "AphiaIDsByAttributeKeyID/" + id,
@@ -290,6 +322,8 @@ public class WormsClient {
 	 * @param aphiaId
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public String aphiaNameByAphiaId(long aphiaId) throws WormsClientException {
 		return this.request(SERVICE_URL + "AphiaNameByAphiaID/" + aphiaId, new TypeReference<String>() {
@@ -302,6 +336,8 @@ public class WormsClient {
 	 * @param aphiaId
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public AphiaRecord aphiaRecordByAphiaId(long aphiaId) throws WormsClientException {
 		return this.request(SERVICE_URL + "AphiaRecordByAphiaID/" + aphiaId, new TypeReference<AphiaRecord>() {
@@ -315,6 +351,8 @@ public class WormsClient {
 	 * @param type
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public AphiaRecord aphiaRecordByExternalId(String id, ExternalIdentifierSource type) throws WormsClientException {
 		try {
@@ -346,6 +384,8 @@ public class WormsClient {
 	 *            Limit to marine taxa.
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaRecordsByDate(TemporalAccessor statdate, TemporalAccessor enddate,
 			boolean marineOnly) throws WormsClientException {
@@ -373,6 +413,8 @@ public class WormsClient {
 	 *            records. First record has number {@code 1}.
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaRecordsByDate(TemporalAccessor statdate, TemporalAccessor enddate,
 			boolean marineOnly, long offset) throws WormsClientException {
@@ -395,7 +437,7 @@ public class WormsClient {
 	 * </p>
 	 * 
 	 * <p>
-	 * <b>Note:</b> This methods might cause multiple calls service request.
+	 * <b>Note:</b> This methods might cause multiple service request.
 	 * </p>
 	 * 
 	 * @param scientificNames
@@ -404,6 +446,8 @@ public class WormsClient {
 	 *            Limit to marine taxa.
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public List<Collection<AphiaRecord>> aphiaRecordsByMatchNames(List<String> scientificNames, boolean marineOnly)
 			throws WormsClientException {
@@ -430,6 +474,8 @@ public class WormsClient {
 	 *            Limit to marine taxa.
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaRecordsByName(String scientificName, boolean like, boolean marineOnly)
 			throws WormsClientException {
@@ -458,6 +504,8 @@ public class WormsClient {
 	 *            records. First record has number {@code 1}.
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaRecordsByName(String scientificName, boolean like, boolean marineOnly,
 			long offset) throws WormsClientException {
@@ -486,6 +534,8 @@ public class WormsClient {
 	 *            Limit to marine taxa.
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public List<Collection<AphiaRecord>> aphiaRecordsByNames(List<String> scientificNames, boolean like,
 			boolean marineOnly) throws WormsClientException {
@@ -510,6 +560,8 @@ public class WormsClient {
 	 *            function).
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaRecordsByVernacular(String vernacular, boolean like)
 			throws WormsClientException {
@@ -538,6 +590,8 @@ public class WormsClient {
 	 *            records. First record has number {@code 1}.
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaRecordsByVernacular(String vernacular, boolean like, long offset)
 			throws WormsClientException {
@@ -557,6 +611,8 @@ public class WormsClient {
 	 * @param aphiaId
 	 *            The AphiaID to search for
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<Source> aphiaSourcesByAphiaId(long aphiaId) throws WormsClientException {
 		return this.request(SERVICE_URL + "AphiaSourcesByAphiaID/" + aphiaId, new TypeReference<ArrayList<Source>>() {
@@ -569,6 +625,8 @@ public class WormsClient {
 	 * @param aphiaId
 	 *            The AphiaID to search for
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaSynonymsByAphiaId(long aphiaId) throws WormsClientException {
 		return this.request(SERVICE_URL + "AphiaSynonymsByAphiaID/" + aphiaId,
@@ -583,6 +641,8 @@ public class WormsClient {
 	 *            The AphiaID to search for
 	 * @return
 	 * @throws WormsClientException
+	 *            
+	 * @since 1.0.0
 	 */
 	public Collection<Vernacular> aphiaVernacularsByAphiaId(long aphiaId) throws WormsClientException {
 		return this.request(SERVICE_URL + "AphiaVernacularsByAphiaID/" + aphiaId,
@@ -619,8 +679,7 @@ public class WormsClient {
 						return (T) JSON.getTypeFactory().constructType(t).getRawClass().newInstance();
 					} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
 							| SecurityException e) {
-						throw new WormsClientException(
-								"Failed to instantiate empty result for \"" + url + "\".", e);
+						throw new WormsClientException("Failed to instantiate empty result for \"" + url + "\".", e);
 					}
 				} else {
 					return null;

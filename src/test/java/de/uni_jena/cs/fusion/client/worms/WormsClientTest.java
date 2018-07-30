@@ -26,11 +26,16 @@ import static org.junit.Assert.assertTrue;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
 import org.junit.Test;
 
+/**
+ * @author Jan Martin Keil
+ * @since 1.0.0
+ */
 public class WormsClientTest {
 
 	private final static WormsClient client = new WormsClient();
@@ -119,15 +124,26 @@ public class WormsClientTest {
 				.filter(x -> Objects.nonNull(x) && x.stream().filter(y -> y.aphiaId == 127160).findAny().isPresent())
 				.findAny().isPresent());
 
+		// multiple requests
+		ArrayList<String> request = new ArrayList<String>();
+		request.add("Solea solea");
+		request.add("Solea");
+		for (int i = 0; i < 50; i++) {
+			request.add("something providing no result " + i);
+		}
+		assertTrue(client.aphiaRecordsByMatchNames(request, false).stream()
+				.filter(x -> Objects.nonNull(x) && x.stream().filter(y -> y.aphiaId == 127160).findAny().isPresent())
+				.findAny().isPresent());
+
 		// Issue 1
-		assertEquals(2,client
-				.aphiaRecordsByNames(Arrays.asList("Aphanizomenon", "something providing no result"), true, false)
-				.stream().filter(x -> Objects.nonNull(x)).count());
+		assertEquals(2,
+				client.aphiaRecordsByMatchNames(Arrays.asList("Aphanizomenon", "something providing no result"), false)
+						.stream().filter(x -> Objects.nonNull(x)).count());
 		// Issue 2
 		assertEquals(2,
-				client.aphiaRecordsByNames(
-						Arrays.asList("something providing no result", "something else providing no result"), true,
-						false).size());
+				client.aphiaRecordsByMatchNames(
+						Arrays.asList("something providing no result", "something else providing no result"), false)
+						.size());
 	}
 
 	@Test
@@ -143,9 +159,9 @@ public class WormsClientTest {
 				.findAny().isPresent());
 
 		// Issue 1
-		assertEquals(2,client
-				.aphiaRecordsByNames(Arrays.asList("Aphanizomenon", "something providing no result"), true, false)
-				.stream().filter(x -> Objects.nonNull(x)).count());
+		assertEquals(2,
+				client.aphiaRecordsByNames(Arrays.asList("Aphanizomenon", "something providing no result"), true, false)
+						.stream().filter(x -> Objects.nonNull(x)).count());
 		// Issue 2
 		assertEquals(2,
 				client.aphiaRecordsByNames(
