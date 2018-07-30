@@ -48,7 +48,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * A client for the <a href="http://www.marinespecies.org/rest/">World Register
- * of Marine Species REST API</a>.
+ * of Marine Species REST API</a>. Please refer to the <a
+ * href=""http://www.marinespecies.org/about.php#terms>terms of use</a>.
  * 
  * @author Jan Martin Keil
  * @since 1.0.0
@@ -76,7 +77,7 @@ public class WormsClient {
 	 * 
 	 * @param httpClient
 	 *            {@link CloseableHttpClient} to use
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public WormsClient(CloseableHttpClient httpClient) {
@@ -91,7 +92,7 @@ public class WormsClient {
 	 * @param includeChildren
 	 *            Include the tree of children.
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<AttributeKey> aphiaAttributeKeysById(long id, boolean includeChildren)
@@ -110,7 +111,7 @@ public class WormsClient {
 	 * @param includeChildren
 	 *            Include attributes inherited from the taxon its parent(s).
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<Attribute> aphiaAttributesByAphiaId(long aphiaId, boolean includeChildren)
@@ -128,7 +129,7 @@ public class WormsClient {
 	 * @param id
 	 *            The CateogryID to search for
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<AttributeValue> aphiaAttributeValuesByCategoryId(long id) throws WormsClientException {
@@ -155,7 +156,7 @@ public class WormsClient {
 	 *            Limit to marine taxa.
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaChildrenByAphiaId(long aphiaId, boolean marineOnly)
@@ -183,7 +184,7 @@ public class WormsClient {
 	 *            First record has number {@code 1}.
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaChildrenByAphiaId(long aphiaId, boolean marineOnly, long offset)
@@ -202,7 +203,7 @@ public class WormsClient {
 	 *            The AphiaID to search for
 	 * @return classification of the taxon
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Classification aphiaClassificationByAphiaId(long aphiaId) throws WormsClientException {
@@ -218,7 +219,7 @@ public class WormsClient {
 	 *            The AphiaID to search for
 	 * @return all distributions
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<Distribution> aphiaDistributionsByAphiaId(long aphiaId) throws WormsClientException {
@@ -236,7 +237,7 @@ public class WormsClient {
 	 *            Type of external identifier to return.
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<String> aphiaExternalIdByAphiaId(long aphiaId, ExternalIdentifierSource type)
@@ -252,7 +253,7 @@ public class WormsClient {
 	 * @param scientificName
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Long aphiaIdByName(String scientificName) throws WormsClientException {
@@ -282,7 +283,7 @@ public class WormsClient {
 	 *            The attribute definition id to search for
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<AphiaAttributeSets> aphiaIdsByAttributeKeyId(long id) throws WormsClientException {
@@ -307,7 +308,7 @@ public class WormsClient {
 	 *            Starting record number, when retrieving next chunk of (50)
 	 *            records. First record has number {@code 1}.
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<AphiaAttributeSets> aphiaIdsByAttributeKeyId(long id, long offset) throws WormsClientException {
@@ -322,7 +323,7 @@ public class WormsClient {
 	 * @param aphiaId
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public String aphiaNameByAphiaId(long aphiaId) throws WormsClientException {
@@ -336,7 +337,7 @@ public class WormsClient {
 	 * @param aphiaId
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public AphiaRecord aphiaRecordByAphiaId(long aphiaId) throws WormsClientException {
@@ -351,7 +352,7 @@ public class WormsClient {
 	 * @param type
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public AphiaRecord aphiaRecordByExternalId(String id, ExternalIdentifierSource type) throws WormsClientException {
@@ -384,7 +385,7 @@ public class WormsClient {
 	 *            Limit to marine taxa.
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaRecordsByDate(TemporalAccessor statdate, TemporalAccessor enddate,
@@ -413,7 +414,7 @@ public class WormsClient {
 	 *            records. First record has number {@code 1}.
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaRecordsByDate(TemporalAccessor statdate, TemporalAccessor enddate,
@@ -446,7 +447,7 @@ public class WormsClient {
 	 *            Limit to marine taxa.
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public List<Collection<AphiaRecord>> aphiaRecordsByMatchNames(List<String> scientificNames, boolean marineOnly)
@@ -474,7 +475,7 @@ public class WormsClient {
 	 *            Limit to marine taxa.
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaRecordsByName(String scientificName, boolean like, boolean marineOnly)
@@ -504,7 +505,7 @@ public class WormsClient {
 	 *            records. First record has number {@code 1}.
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaRecordsByName(String scientificName, boolean like, boolean marineOnly,
@@ -534,7 +535,7 @@ public class WormsClient {
 	 *            Limit to marine taxa.
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public List<Collection<AphiaRecord>> aphiaRecordsByNames(List<String> scientificNames, boolean like,
@@ -560,7 +561,7 @@ public class WormsClient {
 	 *            function).
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaRecordsByVernacular(String vernacular, boolean like)
@@ -590,7 +591,7 @@ public class WormsClient {
 	 *            records. First record has number {@code 1}.
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaRecordsByVernacular(String vernacular, boolean like, long offset)
@@ -611,7 +612,7 @@ public class WormsClient {
 	 * @param aphiaId
 	 *            The AphiaID to search for
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<Source> aphiaSourcesByAphiaId(long aphiaId) throws WormsClientException {
@@ -625,7 +626,7 @@ public class WormsClient {
 	 * @param aphiaId
 	 *            The AphiaID to search for
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<AphiaRecord> aphiaSynonymsByAphiaId(long aphiaId) throws WormsClientException {
@@ -641,7 +642,7 @@ public class WormsClient {
 	 *            The AphiaID to search for
 	 * @return
 	 * @throws WormsClientException
-	 *            
+	 * 
 	 * @since 1.0.0
 	 */
 	public Collection<Vernacular> aphiaVernacularsByAphiaId(long aphiaId) throws WormsClientException {
