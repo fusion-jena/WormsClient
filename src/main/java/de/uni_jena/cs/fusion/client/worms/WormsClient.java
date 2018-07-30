@@ -47,9 +47,16 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
+ * <p>
  * A client for the <a href="http://www.marinespecies.org/rest/">World Register
  * of Marine Species REST API</a>. Please refer to the <a
  * href=""http://www.marinespecies.org/about.php#terms>terms of use</a>.
+ * </p>
+ * <p>
+ * <b>Acknowledgments:</b> The development of the WoRMS Client was funded by DFG
+ * in the scope of the LakeBase project within the Scientific Library Services
+ * and Information Systems (LIS) program.
+ * </p>
  * 
  * @author Jan Martin Keil
  * @since 1.0.0
